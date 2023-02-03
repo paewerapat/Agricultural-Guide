@@ -1,0 +1,1 @@
+start /d "E:\AgriculturalGuide\agricultural-guide" npm run dev

@@ -1,0 +1,16 @@
+section.register {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+section.register .card-register {
+    max-width: 480px;
+    position: relative;
+    margin: auto;
+    background-color: #EEE;
+    padding: 24px;
+    border-radius: 8px;
+}

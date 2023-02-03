@@ -1,0 +1,39 @@
+section#index {
+    position: relative;
+}
+
+section#index > .header {
+    position: relative;
+    background-image: url("../public/images/agricultural-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    min-height: 300px;
+    width: 100%;
+}
+section#index .header .text-header {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: #FFF;
+    text-shadow: 1px 2px gray;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+section#index .header h1{
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+section#index .header-banner {
+    background-color: var(--bs-success-bg-subtle);
+    padding: 1rem 2rem;
+}
+section#index .header-banner h2 {
+    color: #FFF;
+    margin-bottom: 0 !important;
+}

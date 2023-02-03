@@ -1,0 +1,16 @@
+section.login {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.login .card-login {
+    position: relative;
+    max-width: 480px;
+    background-color: #EEE;
+    padding: 24px;
+    border-radius: 8px;
+    margin: 1rem auto;
+}

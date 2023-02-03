@@ -1,0 +1,15 @@
+section#plant-price {
+    position: relative;
+}
+
+section#plant-price .wrapper-content {
+    display: flex;
+    flex-flow: column wrap;
+    margin: .5rem auto;
+}
+section#plant-price .wrapper-content > .header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
