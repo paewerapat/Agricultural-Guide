@@ -13,6 +13,8 @@ function AddLocationPP() {
     const [locationData, setLocationData] = useState(initialState)
     const { latitude, longitude, location_name } = locationData
 
+    console.log("locationData ---> ", locationData)
+
     const handleGetLatLong = (lat, long) => {
         setLocationData({...locationData, latitude: lat, longitude: long})
     }
@@ -21,19 +23,6 @@ function AddLocationPP() {
         const { name, value} = e.target
         setLocationData({...locationData, [name]:value})
     }
-
-    // const R = 6371e3; // metres
-    // const φ1 = currentLat * Math.PI/180; // φ, λ in radians
-    // const φ2 = latitude * Math.PI/180;
-    // const Δφ = (latitude-currentLat) * Math.PI/180;
-    // const Δλ = (longitude-currentLong) * Math.PI/180;
-
-    // const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-    //         Math.cos(φ1) * Math.cos(φ2) *
-    //         Math.sin(Δλ/2) * Math.sin(Δλ/2);
-    // const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-    // const distance = (Math.ceil(R * c))/1000 // in Kilometers
 
     const handleLocationSubmit = (e) => {
         e.preventDefault();

@@ -1,6 +1,18 @@
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
 function PlantPrice() {
+
+    const { user } = useSelector(state => state);
+    const router = useRouter();
+
+    useEffect(() => {
+        if(user.token == '') {
+            router.push("/load-to-redirect")
+        }
+    }, [router, user.token])
+    
     return (
         <section id="plant-price">
             <div className='header-banner bg-success'>

@@ -1,7 +1,19 @@
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
-function weather() {
+function Weather() {
+
+    const { user } = useSelector(state => state);
+    const router = useRouter();
+
+    useEffect(() => {
+        if(user.token == '') {
+            router.push("/load-to-redirect")
+        }
+    }, [router, user.token])
+
     return (
         <section id="weather">
             <div className='header-banner bg-success'>
@@ -64,4 +76,4 @@ function weather() {
     )
 }
 
-export default weather
+export default Weather

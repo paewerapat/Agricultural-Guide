@@ -1,11 +1,27 @@
 import Head from 'next/head'
-import Script from 'next/script'
 import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
 import Layout from '../app/Layout'
 import '../styles/globals.css'
-import { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useCallback, useEffect } from 'react';
+import { wrapper } from '../app/redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUser } from '../app/redux/actions/authAction';
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
+
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state);
+
+  const getTokenData = useCallback(() => {
+    const token = localStorage.getItem("auth-token");
+    if(token) return dispatch(getCurrentUser(token));
+  }, [dispatch])
+
+  useEffect(() => {
+    getTokenData()
+  }, [getTokenData])
 
   useEffect(() => {
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
@@ -21,8 +37,11 @@ export default function App({ Component, pageProps }) {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
     </Head>
     <Layout>
-      <Component {...pageProps} />
+      <ToastContainer />
+        <Component {...pageProps} />
     </Layout>
     </>
   )
 }
+
+export default wrapper.withRedux(App)

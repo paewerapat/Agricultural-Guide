@@ -2,11 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../redux/actions/authAction';
 
 function Navbar() {
 
   const router = useRouter();
   const pathName = router.pathname;
+  const { user } = useSelector(state => state);
+  const dispatch = useDispatch();
 
   const linkItem = [
     {
@@ -31,6 +35,11 @@ function Navbar() {
     },
   ]
 
+  function logoutHandler() {
+    dispatch(logoutUser())
+    router.reload();
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
       <div className="container-fluid">
@@ -52,10 +61,24 @@ function Navbar() {
               ))
             }
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <Link className="btn btn-light my-2 my-sm-0 me-2" href="/login">เข้าสู่ระบบ</Link>
-            <Link className="btn btn-light my-2 my-sm-0 me-3" href="/register">สมัครสมาชิก</Link>
-          </form>
+          {
+            user.token ?
+              <div className="profile dropdown">
+                <span className="btn btn-light my-2 my-sm-0 me-2 dropdown-toggle" id="dropdownProfile" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i className="fa-solid fa-user me-2"></i>{user.fullName}
+                </span>
+
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><Link className="dropdown-item" href={`/profile/${user.userId}`}><i className="fa-solid fa-address-card me-2"></i> Profile</Link></li>
+                  <li><span className="dropdown-item" onClick={logoutHandler}><i className="fa-solid fa-right-from-bracket me-2"></i> Logout</span></li>
+                </ul>
+              </div>
+            :
+            <form className="form-inline my-2 my-lg-0">
+              <Link className="btn btn-light my-2 my-sm-0 me-2" href="/login">เข้าสู่ระบบ</Link>
+              <Link className="btn btn-light my-2 my-sm-0 me-3" href="/register">สมัครสมาชิก</Link>
+            </form>
+          }
         </div>
       </div>
     </nav>
