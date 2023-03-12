@@ -23,6 +23,12 @@ function PlantPrice() {
 
             <div className="container my-5">
 
+                <div className="group-button d-flex justify-content-end">
+                    <button className="btn btn-lg btn-primary" type="button">
+                        เพิ่มพืช
+                    </button>
+                </div>
+
                 <div className="row justify-content-center align-items-center">
                     <div className="col-md-6">
                         <div className='wrapper-content'>

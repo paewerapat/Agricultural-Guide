@@ -62,6 +62,20 @@ function Navbar() {
             }
           </ul>
           {
+            user.role === "admin" && (
+              <div className="dropdown">
+                <span className="btn btn-light my-2 my-sm-0 me-2 dropdown-toggle" id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">
+                  Admin
+                </span>
+
+                <ul className="dropdown-menu">
+                  <li><Link href={"/posts"} className="dropdown-item">Posts</Link></li>
+                  <li><Link></Link></li>
+                </ul>
+              </div>
+            )
+          }
+          {
             user.token ?
               <div className="profile dropdown">
                 <span className="btn btn-light my-2 my-sm-0 me-2 dropdown-toggle" id="dropdownProfile" data-bs-toggle="dropdown" aria-expanded="false">

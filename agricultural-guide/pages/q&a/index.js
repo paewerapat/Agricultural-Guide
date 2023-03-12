@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function QandA() {
@@ -10,6 +11,17 @@ function QandA() {
 
             <div className="container my-5">
                 <div className="row gap-3">
+
+                    <div className="group-button d-flex justify-content-end gap-2 mb-3">
+                        <button className="btn btn-lg btn-primary" type='button'>
+                            <Link href={"/q&a/create"}>
+                                <i className="fa-solid fa-circle-question"></i> สร้างคำถาม
+                            </Link>
+                        </button>
+                        <button className="btn btn-lg btn-success" type='button'>
+                            <i className="fa-solid fa-clipboard-question"></i> ดูคำถามของฉัน
+                        </button>
+                    </div>
 
                     <div className="card-wrapper">
                         <span className="header">

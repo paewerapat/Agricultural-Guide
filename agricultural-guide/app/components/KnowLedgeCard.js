@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-function KnowLedgeCard() {
+function KnowLedgeCard({title, data, id}) {
     return (
         <div className="card" style={{width: '100%'}}>
             <Image src="https://www.agrivi.com/wp-content/uploads/2014/05/Blog-How-to-be-a-Farmer-1200x565.png" className="card-img-top" alt="..." width="400" height="165" style={{objectFit: 'contain'}} />
