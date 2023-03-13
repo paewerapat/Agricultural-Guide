@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import AddLocationPP from '../app/components/AddLocationPP'
+import AddLocationPP from '../../app/components/AddLocationPP';
 
-function AddPP() {
+function Index() {
 
     const { user } = useSelector(state => state);
     const router = useRouter();
@@ -16,12 +16,11 @@ function AddPP() {
         <section className='add-pp'>
             <div className='header-banner bg-success'>
                 <h2 className='text-with-line'>
-                    เพิ่มแปลง
+                    แปลงของคุณ
                 </h2>
             </div>
-            <AddLocationPP />
         </section>
     )
 }
 
-export default AddPP
+export default Index
