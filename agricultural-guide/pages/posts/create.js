@@ -17,7 +17,7 @@ function CreatePost() {
                 data: data,
                 adminId: user.userId
             }
-            const res = await fetch("/api/posts/admin/create-post", {
+            const res = await fetch("/api/posts/admin/create", {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {

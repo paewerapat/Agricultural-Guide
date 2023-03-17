@@ -31,7 +31,7 @@ function Navbar() {
     },
     {
       name: "ถามตอบ",
-      link: "/q&a"
+      link: "/question"
     },
   ]
 
@@ -70,7 +70,6 @@ function Navbar() {
 
                 <ul className="dropdown-menu">
                   <li><Link href={"/posts"} className="dropdown-item">Posts</Link></li>
-                  <li><Link></Link></li>
                 </ul>
               </div>
             )

@@ -28,7 +28,7 @@ export default function Home({posts, question}) {
 
 export async function getServerSideProps() {
   // Call an external API endpoint to get posts
-  const resPosts = await fetch('http://localhost:3000/api/posts/get-post', {
+  const resPosts = await fetch('http://localhost:3000/api/posts/get', {
       method: 'GET',
       headers: {
         limit: 3
@@ -36,7 +36,7 @@ export async function getServerSideProps() {
   })
   const posts = await resPosts.json()
 
-  const resQuestion = await fetch("http://localhost:3000/api/question/get-question", {
+  const resQuestion = await fetch("http://localhost:3000/api/question/get", {
     method: 'GET',
     headers: {
       limit: 3

@@ -35,7 +35,8 @@ export default function Index({posts}) {
                     </thead>
                     <tbody>
                         {
-                            posts.map((post) => (
+                            posts &&
+                            posts?.map((post) => (
                                 <tr key={post.postId}>
                                     <td>{post.postId}</td>
                                     <td>{post.title.substr(0, 20)}</td>
@@ -65,7 +66,7 @@ export default function Index({posts}) {
 
 export async function getStaticProps() {
     // Call an external API endpoint to get posts
-    const res = await fetch('http://localhost:3000/api/posts/get-post', {
+    const res = await fetch('http://localhost:3000/api/posts/get', {
         method: 'GET'
     })
     const posts = await res.json()

@@ -1,17 +1,16 @@
-section#qAnda {
+section#question {
     position: relative;
 }
 
-section#qAnda .card-wrapper {
+section#question .card-wrapper {
     display: flex;
     flex-flow: column nowrap;
     row-gap: 8px;
     width: 100%;
-    border: 2px solid #CCC;
     border-radius: 1rem;
 }
 
-section#qAnda .card-wrapper .header {
+section#question .card-wrapper .header {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -19,13 +18,13 @@ section#qAnda .card-wrapper .header {
     margin: .5rem 0;
 }
 
-section#qAnda .card-wrapper .header .profile {
+section#question .card-wrapper .header .profile {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     column-gap: 16px;
 }
-section#qAnda .card-wrapper .header .profile img {
+section#question .card-wrapper .header .profile img {
     display: block;
     max-height: 36px;
     max-width: 36px;
@@ -33,12 +32,12 @@ section#qAnda .card-wrapper .header .profile img {
     border-radius: 50%;
 }
 
-section#qAnda .card-wrapper .body {
+section#question .card-wrapper .body {
     text-indent: 36px;
     font-size: 24px;
 }
 
-section#qAnda .card-wrapper .comment {
+section#question .card-wrapper .comment {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;

@@ -21,7 +21,7 @@ function EditPost() {
                 data: data,
                 adminId: user.userId
             }
-            const res = await fetch("/api/posts/admin/update-post", {
+            const res = await fetch("/api/posts/admin/update", {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {

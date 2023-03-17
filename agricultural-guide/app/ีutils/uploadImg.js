@@ -1,10 +1,11 @@
 export const imageUpload = async (images) => {
     let imgArr = [];
+    console.log("uploading...")
     for(const item of images){
         const formData = new FormData()
 
         formData.append("file", item)
-        formData.append('upload_preset', "Fak-Chan-Hew")
+        formData.append('upload_preset', "Agriculture")
         formData.append('clound_name', "ducgdgy81")
 
         const res = await fetch("https://api.cloudinary.com/v1_1/ducgdgy81/upload", {
@@ -16,6 +17,7 @@ export const imageUpload = async (images) => {
         imgArr.push({public_id: data.public_id, url: data.secure_url})
         
     }
+    console.log("imgArr", imgArr)
     return imgArr;
 }
 
