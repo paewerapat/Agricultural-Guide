@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import { toast } from 'react-toastify';
 
@@ -24,6 +25,11 @@ export default function Index({posts}) {
             </h2>
         </div>
         <div className="container py-5">
+            <div className='d-flex justify-content-end'>
+                <Link href={"/posts/create"}>
+                    <button type='button' className='btn btn-primary'>สร้างโพสต์</button>
+                </Link>
+            </div>
             <div className="table-responsive">
                 <table className="table mx-auto text-center">
                     <thead>

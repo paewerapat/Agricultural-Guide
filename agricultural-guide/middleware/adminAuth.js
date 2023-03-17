@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 const adminAuth = (handler) => {
     return async (req, res) => {
         try {

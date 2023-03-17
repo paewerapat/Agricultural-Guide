@@ -5,7 +5,9 @@ import PPWeather from './PPWeather';
 function PlantPlot() {
 
     const { user } = useSelector(state => state);
-    const [plantPlotData, setPlantplotData] = useState(false);
+    const [plantPlotData, setPlantplotData] = useState([]);
+
+    console.log("plantPlotData", plantPlotData)
 
     useEffect(() => {
         fetch(`/api/plant-plot/${user.userId}`, {
@@ -14,14 +16,14 @@ function PlantPlot() {
                 token: user.token
             }
         }).then(res => res.json).then(data => {
-
+            setPlantplotData(data)
         })
     }, [user.userId, user.token])
 
     return (
         <>
             {   
-                plantPlotData &&
+                plantPlotData.length > 0 &&
                 plantPlotData.map((data, index => (
                     <PPWeather key={index} data={data} />
                 )))

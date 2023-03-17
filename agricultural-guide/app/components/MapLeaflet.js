@@ -26,7 +26,7 @@ function MapLeaflet({handleGetLatLong, locationName, lat, long,}) {
         const map = useMapEvents({
             click(e){
                 const latlong = e.latlng
-                handleGetLatLong(latlong.lat, latlong.lng)
+                handleGetLatLong(latlong.lat.toString(), latlong.lng.toString())
                 setMarker(latlong)
                 map.flyTo(latlong)
             },

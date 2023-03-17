@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import PlantPlot from '../../app/components/PlantPlot';
 
@@ -8,12 +8,16 @@ function Weather() {
 
     const { user } = useSelector(state => state);
     const router = useRouter();
+    const [plantPlot, setPlantPlot] = useState(false);
 
     useEffect(() => {
-        if(user.token == '') {
-            router.push("/load-to-redirect")
-        }
-    }, [router, user.token])
+        fetch(`/api/plant-plot/${user.userId}`, {
+            headers: {
+                token: user.token
+            },
+            method: 'GET'
+        }).then(res => res.json).then(data => setPlantPlot(data))
+    }, [user.userId, user.token])
 
     return (
         <section id="weather">
@@ -27,7 +31,7 @@ function Weather() {
                 <div>
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-lg btn-success">
-                            <Link href="add-pp">
+                            <Link href="/plant-plots/create">
                                 เพิ่มแปลง
                             </Link>
                         </button>

@@ -11,10 +11,12 @@ function AddLocationPP() {
     const { user } = useSelector(state => state);
 
     const initialState = {
-        ppLat: '', ppLong: '', ppName: ''
+        ppLat: '', ppLong: '', ppName: '', userId: user.userId
     }
     const [locationData, setLocationData] = useState(initialState)
-    const { ppLat, ppLong, ppName } = locationData
+    const { ppLat, ppLong, ppName, userId } = locationData
+
+    console.log("locationData", locationData)
 
     const handleGetLatLong = (lat, long) => {
         setLocationData({...locationData, ppLat: lat, ppLong: long})
@@ -30,21 +32,18 @@ function AddLocationPP() {
         try {
             const res = await fetch("/api/plant-plot/create", {
                 method: 'POST',
-                body: JSON.stringify(locationData),
+                body: JSON.stringify({...locationData, userId: user.userId}),
                 headers: {
                     token: user.token
                 }
             })
             const data = await res.json();
+            setLocationData(initialState)
             return toast.success(data.msg);
         } catch (err) {
             return toast.error(err.msg);
         }
     }
-
-    useEffect(() => {
-        if(user.userId) setLocationData({...locationData, userId: user.userId})
-    }, [locationData, user.userId])
 
     return (
         <div className="container my-5">

@@ -9,8 +9,6 @@ function CreateQAndA() {
     const initialData = "<p>Enter your text here...</p>"
     const [data, setData] = useState(initialData);
 
-    console.log("data ---> ", data);
-
     async function submitQuestion(e) {
         e.preventDefault();
         try {
@@ -18,7 +16,7 @@ function CreateQAndA() {
                 questionInfo: data,
                 userId: user.userId
             }
-            const res = await fetch("/api/question/create-question", {
+            const res = await fetch("/api/question/create", {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {

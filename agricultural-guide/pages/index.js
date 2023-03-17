@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import KnowLedge from '../app/components/KnowLedge'
-import QandA from '../app/components/QAndA'
+import Question from '../app/components/Question'
 
 export default function Home({posts, question}) {
   return (
@@ -20,7 +20,7 @@ export default function Home({posts, question}) {
          </div>
         </div>
         <KnowLedge posts={posts} />
-        <QandA question={question} />
+        <Question question={question} />
       </section>
     </>
   )

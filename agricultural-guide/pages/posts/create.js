@@ -54,11 +54,11 @@ function CreatePost() {
                     }}
                     type="classic"
                 />
-                <div className="d-block ms-auto">
-                    <button type='reset' className='btn btn-secondary ms-auto mt-3'>
+                <div className="d-flex gap-2 justify-content-end my-3">
+                    <button type='reset' className='btn btn-secondary'>
                         Reset
                     </button>
-                    <button type='submit' className='btn btn-success ms-auto mt-3'>
+                    <button type='submit' className='btn btn-success'>
                         สร้างโพสต์
                     </button>
                 </div>

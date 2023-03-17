@@ -47,3 +47,34 @@ section#question .card-wrapper .comment {
     padding-top: .5rem;
     border-top: 1px solid #AAA;
 }
+
+
+
+/* comment */
+section#comment {
+    position: relative;
+}
+
+section#comment .wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+section#comment .wrapper .profile {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: .25rem;
+    gap: 1rem;
+    align-items: center;
+}
+section#comment .wrapper .profile img {
+    max-width: 32px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+section#comment .wrapper .profile .time {
+    text-align: end;
+}

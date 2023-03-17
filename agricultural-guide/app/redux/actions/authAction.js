@@ -9,9 +9,10 @@ export const loginAction = (userData) => async (dispatch) => {
             body: JSON.stringify(userData)
         })
         const jsonRes = await res.json();
+        console.log("jsonRes ---> ", jsonRes)
         localStorage.setItem("auth-token", jsonRes.token);
         const payload = {
-            ...jsonRes,
+            ...jsonRes.payload,
             token: jsonRes.token
         }
         dispatch(login(payload));
