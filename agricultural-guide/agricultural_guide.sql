@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2023 at 04:29 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Mar 17, 2023 at 08:47 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,11 +42,20 @@ CREATE TABLE `answer` (
 
 CREATE TABLE `plant_plot` (
   `ppId` int(10) NOT NULL,
-  `ppLong` float NOT NULL,
-  `ppLat` float NOT NULL,
+  `ppLong` varchar(50) NOT NULL,
+  `ppLat` varchar(50) NOT NULL,
   `ppName` varchar(50) NOT NULL,
   `userId` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `plant_plot`
+--
+
+INSERT INTO `plant_plot` (`ppId`, `ppLong`, `ppLat`, `ppName`, `userId`) VALUES
+(9, '100.4940307224923', '7.044668374343263', 'hello', '1234'),
+(10, '100.49960050758754', '6.99934249357984', 'PSU', '1234'),
+(11, '100.50459442682441', '8.5274619489783', 'Bangkok', '1234');
 
 -- --------------------------------------------------------
 
@@ -86,6 +95,13 @@ CREATE TABLE `posts` (
   `data` text NOT NULL,
   `adminId` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`postId`, `title`, `data`, `adminId`) VALUES
+(0, 'hello post', 'Enter your text here...', '1234');
 
 -- --------------------------------------------------------
 
@@ -192,7 +208,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `plant_plot`
 --
 ALTER TABLE `plant_plot`
-  MODIFY `ppId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ppId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `plant_price`
