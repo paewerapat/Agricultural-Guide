@@ -1,9 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import Comment from '../../app/components/Comment'
+import Question from '../../app/components/Question'
+import QuestionCard from '../../app/components/QuestionCard'
 
-function Question({question}) {
+function Index({question}) {
+
+    console.log("question", question)
+
     return (
         <section id="question">
             <div className='header-banner bg-success'>
@@ -27,10 +31,13 @@ function Question({question}) {
                     {
                         question && 
                         question.map((data, index) =>
-                            <Question key={index} question={data} />
+                        <div className="container my-1" key={index}>
+                            <div className="row gap-3">
+                                <QuestionCard key={index} data={data}  />
+                            </div>
+                        </div>
                         )
                     }
-                
                     
                 </div>
             </div>
@@ -40,7 +47,7 @@ function Question({question}) {
 
 export async function getStaticProps() {
     // Call an external API endpoint to get posts
-    const res = await fetch('http://localhost:3000/api/question/get', {
+    const res = await fetch('http://127.0.0.1:3000/api/question/get', {
         method: 'GET'
     })
     const question = await res.json()
@@ -55,4 +62,4 @@ export async function getStaticProps() {
     }
 }
 
-export default Question
+export default Index

@@ -20,6 +20,9 @@ export default function Home({posts, question}) {
          </div>
         </div>
         <KnowLedge posts={posts} />
+        <div className='header-banner bg-success'>
+          <h2 className='text-with-line'>ข้อมูลถามตอบ</h2>
+        </div>
         <Question question={question} />
       </section>
     </>
@@ -28,7 +31,7 @@ export default function Home({posts, question}) {
 
 export async function getServerSideProps() {
   // Call an external API endpoint to get posts
-  const resPosts = await fetch('http://localhost:3000/api/posts/get', {
+  const resPosts = await fetch('http://127.0.0.1:3000/api/posts/get', {
       method: 'GET',
       headers: {
         limit: 3
@@ -36,7 +39,7 @@ export async function getServerSideProps() {
   })
   const posts = await resPosts.json()
 
-  const resQuestion = await fetch("http://localhost:3000/api/question/get", {
+  const resQuestion = await fetch("http://127.0.0.1:3000/api/question/get", {
     method: 'GET',
     headers: {
       limit: 3

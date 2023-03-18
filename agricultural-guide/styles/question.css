@@ -50,31 +50,34 @@ section#question .card-wrapper .comment {
 
 
 
-/* comment */
-section#comment {
+/* answer */
+section#answer {
     position: relative;
 }
 
-section#comment .wrapper {
+section#answer .wrapper {
     display: flex;
     flex-flow: row nowrap;
     margin-bottom: 1rem;
     align-items: center;
     justify-content: space-between;
 }
-section#comment .wrapper .profile {
+section#answer .wrapper .profile {
     display: flex;
     flex-flow: row nowrap;
     margin-bottom: .25rem;
-    gap: 1rem;
+    gap: .5rem;
     align-items: center;
 }
-section#comment .wrapper .profile img {
+section#answer .wrapper .profile p {
+    margin: 0;
+}
+section#answer .wrapper .profile img {
     max-width: 32px;
     width: 32px;
     object-fit: cover;
     border-radius: 50%;
 }
-section#comment .wrapper .profile .time {
+section#answer .wrapper .profile .time {
     text-align: end;
 }

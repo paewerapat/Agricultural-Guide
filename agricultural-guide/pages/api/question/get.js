@@ -4,6 +4,7 @@ import db from "../../../database/db";
 async function hanlder(req, res) {
     try {
         const { limit } = req.headers
+        // ${limit ? `LIMIT ${limit}` : ''}
         const data = await db.query(`SELECT * FROM question ${limit ? `LIMIT ${limit}` : ''}`)
         db.end();
 

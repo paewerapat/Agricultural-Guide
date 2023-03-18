@@ -19,7 +19,7 @@ function Navbar() {
     },
     {
       name: "เพิ่มแปลง",
-      link: "/plant-plots/add"
+      link: "/plant-plot/create"
     },
     {
       name: "ราคาพืช",

@@ -5,9 +5,11 @@ function PPWeather({data}) {
 
     const [weatherData, setWeatherData] = useState(false);
 
+    console.log("weatherData", weatherData)
+
     useEffect(() => {
         fetch(`${API_URL}lat=${data.ppLat}&lon=${data.ppLong}&appId=${API_KEY}`)
-            .then(res => res.json)
+            .then(res => res.json())
             .then(data => setWeatherData(data))
     }, [data])
 

@@ -6,19 +6,6 @@ import PlantPlot from '../../app/components/PlantPlot';
 
 function Weather() {
 
-    const { user } = useSelector(state => state);
-    const router = useRouter();
-    const [plantPlot, setPlantPlot] = useState(false);
-
-    useEffect(() => {
-        fetch(`/api/plant-plot/${user.userId}`, {
-            headers: {
-                token: user.token
-            },
-            method: 'GET'
-        }).then(res => res.json).then(data => setPlantPlot(data))
-    }, [user.userId, user.token])
-
     return (
         <section id="weather">
             <div className='header-banner bg-success'>
@@ -31,7 +18,7 @@ function Weather() {
                 <div>
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-lg btn-success">
-                            <Link href="/plant-plots/create">
+                            <Link href="/plant-plot/create">
                                 เพิ่มแปลง
                             </Link>
                         </button>

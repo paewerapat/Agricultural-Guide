@@ -7,26 +7,28 @@ function PlantPlot() {
     const { user } = useSelector(state => state);
     const [plantPlotData, setPlantplotData] = useState([]);
 
-    console.log("plantPlotData", plantPlotData)
-
     useEffect(() => {
-        fetch(`/api/plant-plot/${user.userId}`, {
-            method: 'GET',
-            headers: {
-                token: user.token
-            }
-        }).then(res => res.json).then(data => {
-            setPlantplotData(data)
-        })
-    }, [user.userId, user.token])
+        if(user.userId) {
+            fetch(`/api/plant-plot/${user.userId}`, {
+                method: 'GET',
+                headers: {
+                    token: user.token
+                }
+            }).then(res => res.json()).then(data => {
+                setPlantplotData(data)
+            })
+        }
+    }, [user.userId])
+
+    console.log("plantPlotData", plantPlotData)
 
     return (
         <>
             {   
                 plantPlotData.length > 0 &&
-                plantPlotData.map((data, index => (
+                plantPlotData?.map((data, index) => (
                     <PPWeather key={index} data={data} />
-                )))
+                ))
             }
         </>
     )

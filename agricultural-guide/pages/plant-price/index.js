@@ -8,11 +8,7 @@ function PlantPrice({data}) {
     const { user } = useSelector(state => state);
     const router = useRouter();
 
-    useEffect(() => {
-        if(user.token == '') {
-            router.push("/load-to-redirect")
-        }
-    }, [router, user.token])
+    console.log("data ---> ", data)
     
     return (
         <section id="plant-price">
@@ -37,12 +33,25 @@ function PlantPrice({data}) {
                         data.map((item, index) => (
                             <div className="col-md-6" key={index}>
                                 <div className='wrapper-content'>
-                                    <span className="header btn btn-success w-100" data-bs-toggle="collapse" href={`#${index}`} role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        <h6>ข้าว</h6> <i className="fa-solid fa-angles-down"></i>
+                                    <span className="header btn btn-success w-100" data-bs-toggle="collapse" href={`#plantId_${item.plantId}`} role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <div className="plant-desc d-flex align-items-center gap-5">
+                                            <div className="title">
+                                                <h6>{item.plantName}</h6>
+                                                <small>{item.plantType}</small>
+                                            </div>
+                                            <h5>{item.plantPrice} บาท</h5>
+                                        </div> 
+                                        <i className="fa-solid fa-angles-down"></i>
                                     </span>
-                                    <div className="collapse" id={index}>
+                                    <div className="collapse" id={`plantId_${item.plantId}`}>
                                         <div className="card card-body">
-                                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                                            <img src={JSON.parse(item.plantImg).url} className="w-100" alt={`plant_img${item.plantId}`} />
+                                            {
+                                            user.role == "admin" && 
+                                            <Link className='btn btn-sm btn-warning' href={`/plant-price/edit?plantId=${item.plantId}`}>
+                                                แก้ไข
+                                            </Link>
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +67,7 @@ function PlantPrice({data}) {
 
 export async function getStaticProps() {
     // Call an external API endpoint to get posts
-    const res = await fetch('http://localhost:3000/api/plant-price/get', {
+    const res = await fetch('http://127.0.0.1:3000/api/plant-price/get', {
         method: 'GET'
     })
     const data = await res.json()
