@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 function CreatePost() {
 
     const { user } = useSelector(state => state)
-    const [data, setData] = useState("Enter your text here...");
+    const initialData = "Enter your text here..."
+    const [data, setData] = useState(initialData);
     const [title, setTitle] = useState("");
 
     async function submitPost(e) {
@@ -25,6 +26,8 @@ function CreatePost() {
                 }
             })
             const resJson = await res.json();
+            setData(initialData)
+            setTitle("")
             toast.success(resJson.msg)
         } catch (err) {
             toast.error(err.msg)

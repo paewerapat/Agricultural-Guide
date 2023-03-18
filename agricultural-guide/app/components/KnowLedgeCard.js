@@ -1,14 +1,23 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function KnowLedgeCard({title, data, id}) {
+
+    console.log("title", title)
+    console.log("title", data)
+    console.log("title", id)
+
     return (
-        <div className="card" style={{width: '100%'}}>
-            <Image src="https://www.agrivi.com/wp-content/uploads/2014/05/Blog-How-to-be-a-Farmer-1200x565.png" className="card-img-top" alt="..." width="400" height="165" style={{objectFit: 'contain'}} />
+        <div className="card" style={{width: '100%', maxHeight: '100%'}}>
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card&apos;s content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
+                <h5 className="card-title">{title}</h5>
+                <span className="card-text">
+                    <div dangerouslySetInnerHTML={{ __html: data }} />
+                </span>
+                <Link href={`/posts/${id}`} className="btn btn-primary">
+                    Read more
+                </Link>
             </div>
         </div>
     )

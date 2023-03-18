@@ -5,7 +5,7 @@ import userAuth from "../../../middleware/auth";
 
 async function handler(req, res) {
     try {
-        // const data = await db.query(`SELECT * FROM answer WHERE questionId = ?`, req.query.id)
+        const data = await db.query(`SELECT * FROM answer WHERE questionId = ?`, req.query.id)
         db.end()
 
         return res.status(200).json(data)
@@ -14,4 +14,4 @@ async function handler(req, res) {
     }
 }
 
-export default userAuth
+export default handler;

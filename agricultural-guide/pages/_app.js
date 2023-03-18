@@ -38,7 +38,7 @@ function App({ Component, pageProps }) {
     </Head>
     <Layout>
       <ToastContainer />
-        <Component {...pageProps} />
+      <Component {...pageProps} />
     </Layout>
     </>
   )

@@ -20,7 +20,8 @@ export default async function handler(req, res) {
         const payload = {
             userId: userData.userId,
             fullName: userData.fullName,
-            role: userData.role
+            role: userData.role,
+            img: userData.img
         }
 
         jwt.sign(payload, "jwtSecret", {

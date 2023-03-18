@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import KnowLedgeCard from './KnowLedgeCard'
 
 function KnowLedge({posts}) {
+
+    console.log("KnowLedge", posts)
+
     return (
         <>
             <div className='header-banner bg-success'>

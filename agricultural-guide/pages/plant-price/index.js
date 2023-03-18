@@ -6,9 +6,8 @@ import { useSelector } from 'react-redux';
 function PlantPrice({data}) {
 
     const { user } = useSelector(state => state);
-    const router = useRouter();
 
-    console.log("data ---> ", data)
+    console.log("data array ", data)
     
     return (
         <section id="plant-price">
@@ -67,7 +66,7 @@ function PlantPrice({data}) {
 
 export async function getStaticProps() {
     // Call an external API endpoint to get posts
-    const res = await fetch('http://127.0.0.1:3000/api/plant-price/get', {
+    const res = await fetch('http://0.0.0.0:3000/api/plant-price/get', {
         method: 'GET'
     })
     const data = await res.json()

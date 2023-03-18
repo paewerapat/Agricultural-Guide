@@ -1,0 +1,8 @@
+section#ppweather .form-group {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 1rem;
+}
+section#ppweather p {
+    margin-bottom: 0;
+}

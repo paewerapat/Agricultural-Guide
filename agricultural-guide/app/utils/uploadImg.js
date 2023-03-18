@@ -1,6 +1,5 @@
 export const imageUpload = async (images) => {
     let imgArr = [];
-    console.log("uploading...")
     for(const item of images){
         const formData = new FormData()
 

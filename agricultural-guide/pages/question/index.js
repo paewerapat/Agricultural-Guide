@@ -5,9 +5,6 @@ import Question from '../../app/components/Question'
 import QuestionCard from '../../app/components/QuestionCard'
 
 function Index({question}) {
-
-    console.log("question", question)
-
     return (
         <section id="question">
             <div className='header-banner bg-success'>

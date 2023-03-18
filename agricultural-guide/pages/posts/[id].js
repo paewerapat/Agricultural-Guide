@@ -1,38 +1,31 @@
-import React from 'react'
-
-export async function getStaticPaths() {
-    // When this is true (in preview environments) don't
-    // prerender any static pages
-    // (faster builds, but slower initial page load)
-    if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-      return {
-        paths: [],
-        fallback: 'blocking',
-      }
-    }
-  
-    // Call an external API endpoint to get posts
-    const res = await fetch('/api/posts/get-post', {
-        method: 'GET'
-    })
-    const posts = await res.json()
-  
-    // Get the paths we want to prerender based on posts
-    // In production environments, prerender all pages
-    // (slower builds, but faster initial page load)
-    const paths = posts.map((post) => ({
-      params: { id: post.id },
-    }))
-  
-    // { fallback: false } means other routes should 404
-    return { paths, fallback: false }
-  }
+import { Router, useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
 
 function PostId() {
+
+    const router = useRouter();
+    const { id } = router.query;
+
+    const [postData, setPostData] = useState(false);
+
+    useEffect(() => {
+        fetch(`/api/posts/${id}`, {
+            method: 'GET'
+        }).then(res => res.json()).then(data => setPostData(data))
+    }, [])
+
     return (
-        <div>
-            
-        </div>
+        <section id="post-id" className='container'>
+            {
+                postData &&
+                <>
+                <h2 className='mt-5 mb-3'>
+                    {postData.title}
+                </h2>
+                {postData.data}
+                </>
+            }
+        </section>
     )
 }
 

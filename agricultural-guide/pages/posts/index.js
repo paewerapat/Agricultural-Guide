@@ -45,7 +45,7 @@ export default function Index({posts}) {
                             posts?.map((post) => (
                                 <tr key={post.postId}>
                                     <td>{post.postId}</td>
-                                    <td>{post.title.substr(0, 20)}</td>
+                                    <td>{post.title}</td>
                                     <td className='d-flex gap-2 justify-content-center'>
                                         <button className="btn btn-warning">
                                             Edit
@@ -72,7 +72,7 @@ export default function Index({posts}) {
 
 export async function getStaticProps() {
     // Call an external API endpoint to get posts
-    const res = await fetch('http://localhost:3000/api/posts/get', {
+    const res = await fetch('http://127.0.0.1:3000/api/posts/get', {
         method: 'GET'
     })
     const posts = await res.json()

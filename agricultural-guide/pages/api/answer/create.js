@@ -5,6 +5,7 @@ import userAuth from "../../../middleware/auth";
 
 async function handler(req, res) {
     try {
+        console.log("req.body", JSON.parse(req.body))
         await db.query(`INSERT INTO answer SET ?`, JSON.parse(req.body))
         db.end()
 
@@ -14,4 +15,4 @@ async function handler(req, res) {
     }
 }
 
-export default userAuth
+export default userAuth(handler)

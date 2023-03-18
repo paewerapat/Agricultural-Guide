@@ -15,7 +15,7 @@ const myIcon = L.icon({
     iconSize: [50, 50]
 });
 
-function MapLeaflet({handleGetLatLong, locationName, lat, long,}) {
+function MapLeaflet({handleGetLatLong, locationName, lat, long, height, width}) {
 
     const village = [7.0091783, 100.467869]
     const [marker, setMarker] = useState(null)
@@ -59,11 +59,20 @@ function MapLeaflet({handleGetLatLong, locationName, lat, long,}) {
             center={(lat && long) ? [lat, long] : village} 
             zoom={12}
             scrollWheelZoom={true}
-            style={{
-                display: 'block',
-                maxWidth: '480px',
-                height: '480px'
-            }}
+            style={
+                height && width
+                ?
+                {
+                    maxWidth: width,
+                    height: height,
+                    display: 'block', 
+                }
+                :
+                {
+                    maxWidth: '480px',
+                    height: '480px',
+                    display: 'block', 
+                }}
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

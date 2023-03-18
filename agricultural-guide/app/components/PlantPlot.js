@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import PPWeather from './PPWeather';
 
+
 function PlantPlot() {
 
     const { user } = useSelector(state => state);

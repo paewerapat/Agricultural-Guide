@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { imageCheck, imageUpload } from '../../app/ีutils/uploadImg';
+import { imageCheck, imageUpload } from '../../app/utils/uploadImg';
 
 function CreatePlant() {
 
@@ -9,11 +9,11 @@ function CreatePlant() {
     const [image, setImage] = useState(false);
 
     const initialData = {
-        plantName: '', plantPrice: '', plantType: '', plantImg: ''
+        plantName: '', plantPrice: '', plantType: '', plantImg: '', plantDesc: ''
     }
     const [plantData, setPlantData] = useState(initialData);
     const {
-        plantName, plantPrice, plantType, plantImg
+        plantName, plantPrice, plantType, plantImg, plantDesc
     } = plantData;
 
     async function inputHandle(e) {
@@ -34,7 +34,7 @@ function CreatePlant() {
             let media;
             if(image) media = await imageUpload([image])
             media = JSON.stringify(media[0])
-            await fetch("/api/plant-price/create", {
+            const response = await fetch("/api/plant-price/create", {
                 method: 'POST',
                 body: JSON.stringify({
                     ...plantData, adminId: user.userId, plantImg: media
@@ -43,6 +43,9 @@ function CreatePlant() {
                     token: user.token
                 },
             })
+            const dataRes = await response.json();
+            toast.success(dataRes.msg)
+            setPlantData(initialData)
         } catch (error) {
             return toast.error(error)
         }
@@ -61,6 +64,12 @@ function CreatePlant() {
                     <label htmlFor="exampleFormControlInput1" className="form-label">ชื่อพืช</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="เช่น ทุเรียน" 
                         name="plantName" onChange={inputHandle} value={plantName}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="exampleFormControlInput1" className="form-label">รายละเอียด</label>
+                    <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="รายละเอียดพืช" 
+                        name="plantDesc" onChange={inputHandle} value={plantDesc}
                     />
                 </div>
                 <div className='mb-3'>
