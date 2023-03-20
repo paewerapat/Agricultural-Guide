@@ -26,7 +26,7 @@ function Index({question}) {
                     </div>
 
                     {
-                        question && 
+                        question.length > 0 && 
                         question.map((data, index) =>
                         <div className="container my-1" key={index}>
                             <div className="row gap-3">

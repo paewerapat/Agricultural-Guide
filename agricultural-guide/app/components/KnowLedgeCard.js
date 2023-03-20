@@ -12,7 +12,7 @@ function KnowLedgeCard({title, data, id}) {
         <div className="card" style={{width: '100%', maxHeight: '100%'}}>
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
-                <span className="card-text">
+                <span className="card-text" id='ckeditor-text'>
                     <div dangerouslySetInnerHTML={{ __html: data }} />
                 </span>
                 <Link href={`/posts/${id}`} className="btn btn-primary">

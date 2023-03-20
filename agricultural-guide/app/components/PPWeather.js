@@ -7,8 +7,6 @@ function PPWeather({data}) {
 
     const [weatherData, setWeatherData] = useState(false);
 
-    console.log("weatherData", data)
-
     useEffect(() => {
         fetch(`${API_URL}lat=${data.ppLat}&lon=${data.ppLong}&appId=${API_KEY}`)
             .then(res => res.json())
@@ -19,43 +17,43 @@ function PPWeather({data}) {
         <>
             {
                 weatherData &&
-                <section id="ppweather" className='row my-2 p-3 rounded shadow'>
-                <div className="col-md-3">
-                    <MapLeaflet height={'300px'} width={'300px'} lat={data.ppLat} long={data.ppLong} locationName={data.ppName} />
-                </div>
-                <div className="col-md-3">
-                    <div className="location form-group">
-                        <h6 className='btn btn-dark'>ชื่อแปลง</h6>
-                        <p className='mb-3'>{data.ppName}</p>
-                        <h6 className='btn btn-dark'>พิกัดแปลง</h6>
-                        <p>Latitude: {weatherData?.coord?.lat}</p>
-                        <p>Longitude: {weatherData?.coord?.lon}</p>
+                <section id="ppweather" className='row my-2 p-3 rounded shadow' style={{textTransform: 'capitalize'}}>
+                    <div className="col-md-3">
+                        <MapLeaflet height={'300px'} width={'300px'} lat={data.ppLat} long={data.ppLong} locationName={data.ppName} />
                     </div>
-                    <div className="name">
-                        <h6 className='btn btn-dark'>เมือง</h6>
-                        <p>{weatherData.name}</p>
-                    </div>
-                </div>
-
-                <div className="col-md-3">
-                    <div className="weather">
-                        <h6 className='btn btn-primary'>สภาพอากาศ</h6>
-                        <p>{weatherData.weather[0].main}</p>
-                        <p>{weatherData.weather[0].description}</p>
-                    </div>
-                </div>
-
-                <div className="col-md-3">
-                    <div className="temperature mb-3">
-                        <h6 className='btn btn-warning'>อุณหภูมิ</h6>
-                        <p>{Math.round(weatherData.main.temp)}</p>
+                    <div className="col-md-3">
+                        <div className="location form-group">
+                            <h6 className='btn btn-dark'>ชื่อแปลง</h6>
+                            <p className='mb-3'>{data.ppName}</p>
+                            <h6 className='btn btn-dark'>พิกัดแปลง</h6>
+                            <p>Latitude: {weatherData?.coord?.lat}</p>
+                            <p>Longitude: {weatherData?.coord?.lon}</p>
+                        </div>
+                        <div className="name">
+                            <h6 className='btn btn-dark'>เมือง</h6>
+                            <p>{weatherData.name}</p>
+                        </div>
                     </div>
 
-                    <div className="wind">
-                        <h6 className='btn btn-warning'>ความเร็วลม</h6>
-                        <p>{weatherData.wind.speed} m/s</p>
+                    <div className="col-md-3">
+                        <div className="weather">
+                            <h6 className='btn btn-primary'>สภาพอากาศ</h6>
+                            <p>{weatherData.weather[0].main}</p>
+                            <p>{weatherData.weather[0].description}</p>
+                        </div>
                     </div>
-                </div>
+
+                    <div className="col-md-3">
+                        <div className="temperature mb-3">
+                            <h6 className='btn btn-warning'>อุณหภูมิ</h6>
+                            <p>{Math.round(weatherData.main.temp)/10} °C</p>
+                        </div>
+
+                        <div className="wind">
+                            <h6 className='btn btn-warning'>ความเร็วลม</h6>
+                            <p>{weatherData.wind.speed} m/s</p>
+                        </div>
+                    </div>
                 </section>
             }
         </>

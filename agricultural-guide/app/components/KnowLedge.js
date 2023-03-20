@@ -13,7 +13,7 @@ function KnowLedge({posts}) {
                 </h2>
             </div>
             <div className="container py-5 my-5">
-                <div className="row justify-content-center align-items-center row-gap-3">
+                <div className="row justify-content-center align-items-top row-gap-3">
                     {
                         posts.length > 0 && posts.map((post) => (
                             <div className="col-md-4 col-sm-6" key={post.postId}>

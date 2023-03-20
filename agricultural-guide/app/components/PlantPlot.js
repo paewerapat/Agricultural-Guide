@@ -21,8 +21,6 @@ function PlantPlot() {
         }
     }, [user.userId])
 
-    console.log("plantPlotData", plantPlotData)
-
     return (
         <>
             {   

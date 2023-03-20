@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 
 
-const MapLeaflet = dynamic(() => import("./MapLeaflet"), { ssr: false });
+const MapLeaflet = dynamic(() => import("./MapLeaflet"), { loading: () => <p>A map is loading</p>, ssr: false });
 
 function AddLocationPP() {
     
@@ -15,8 +15,6 @@ function AddLocationPP() {
     }
     const [locationData, setLocationData] = useState(initialState)
     const { ppLat, ppLong, ppName, userId } = locationData
-
-    console.log("locationData", locationData)
 
     const handleGetLatLong = (lat, long) => {
         setLocationData({...locationData, ppLat: lat, ppLong: long})

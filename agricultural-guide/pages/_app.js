@@ -4,6 +4,7 @@ import Layout from '../app/Layout'
 import '../styles/globals.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'leaflet/dist/leaflet.css';
 import { useCallback, useEffect } from 'react';
 import { wrapper } from '../app/redux/store';
 import { useDispatch, useSelector } from 'react-redux';

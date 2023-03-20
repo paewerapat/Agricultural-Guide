@@ -63,7 +63,7 @@ function QuestionCard({data}) {
             <span className="header d-flex justify-content-between">
                 <div className="profile d-flex gap-2 align-items-center">
                     <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="profile" height={36} width={36}/>
-                    <h6>Lorem, ipsum dolor.</h6>
+                    <h6>{data.fullName}</h6>
                 </div>
                 <div className="edit d-flex gap-2 align-items-center">
                     {moment(data.timeStamp).format('MMMM Do YYYY, h:mm:ss a')}

@@ -34,7 +34,7 @@ function PlantPrice({data}) {
                                 <div className='wrapper-content'>
                                     <span className="header btn btn-success w-100" data-bs-toggle="collapse" href={`#plantId_${item.plantId}`} role="button" aria-expanded="false" aria-controls="collapseExample">
                                         <div className="plant-desc d-flex align-items-center gap-5">
-                                            <div className="title">
+                                            <div className="title" style={{textAlign: 'start'}}>
                                                 <h6>{item.plantName}</h6>
                                                 <small>{item.plantType}</small>
                                             </div>
@@ -45,6 +45,7 @@ function PlantPrice({data}) {
                                     <div className="collapse" id={`plantId_${item.plantId}`}>
                                         <div className="card card-body">
                                             <img src={JSON.parse(item.plantImg).url} className="w-100" alt={`plant_img${item.plantId}`} />
+                                            <p className='text-center'>{item.plantDesc}</p>
                                             {
                                             user.role == "admin" && 
                                             <Link className='btn btn-sm btn-warning' href={`/plant-price/edit?plantId=${item.plantId}`}>

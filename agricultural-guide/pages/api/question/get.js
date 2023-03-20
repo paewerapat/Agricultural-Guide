@@ -5,7 +5,7 @@ async function hanlder(req, res) {
     try {
         const { limit } = req.headers
         // ${limit ? `LIMIT ${limit}` : ''}
-        const data = await db.query(`SELECT * FROM question ${limit ? `LIMIT ${limit}` : ''}`)
+        const data = await db.query(`SELECT * FROM question JOIN user ON user.userId = question.userId ${limit ? `LIMIT ${limit}` : ''}`)
         db.end();
 
         return res.status(200).json(data);
