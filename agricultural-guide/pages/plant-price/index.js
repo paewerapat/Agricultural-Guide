@@ -6,8 +6,6 @@ import { useSelector } from 'react-redux';
 function PlantPrice({data}) {
 
     const { user } = useSelector(state => state);
-
-    console.log("data array ", data)
     
     return (
         <section id="plant-price">

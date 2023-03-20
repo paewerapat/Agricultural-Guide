@@ -3,9 +3,6 @@ import KnowLedge from '../app/components/KnowLedge'
 import Question from '../app/components/Question'
 
 export default function Home({posts, question}) {
-
-  console.log("posts", posts)
-
   return (
     <>
       <Head>
